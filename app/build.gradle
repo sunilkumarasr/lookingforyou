@@ -1,0 +1,171 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
+}
+
+android {
+    namespace 'com.stranger_sparks'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.stranger_sparks"
+        minSdk 24
+        targetSdk 34
+        versionCode 8
+        versionName "1.2.5"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+//    playstore details
+//    password: royalit@123
+//    alias:stranger_spark
+
+    buildTypes {
+        release {
+            debug {
+                def url = "https://lookingforu.in/"
+                buildConfigField("String", "BASE_URL", "\"${url}api/\"")
+                buildConfigField("String", "SITE_KEY", "\"6LfeatkZAAAAAGvIlFzEIYWnFwRsYv9_IwnoC0Vh\"")
+                buildConfigField("String", "API_URL", "\"${url}\"")
+                buildConfigField("String", "IMG_URL", "\"${url}uploads/\"")
+                buildConfigField("String", "PRIVACY_POLCY", "\"${url}api/privacy_policy\"")
+                buildConfigField("String", "ABOUT_US", "\"${url}api/about_us\"")
+                buildConfigField("String", "TERMS_CONDITIONS", "\"${url}api/term_and_conditions\"")
+                buildConfigField("String", "FAQ", "\"${url}api/faq\"")
+                buildConfigField('boolean', 'HTTP_LOG', 'false')
+            }
+            release {
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+                def url = "https://lookingforu.in/"
+                buildConfigField("String", "BASE_URL", "\"${url}api/\"")
+                buildConfigField("String", "SITE_KEY", "\"6LfeatkZAAAAAGvIlFzEIYWnFwRsYv9_IwnoC0Vh\"")
+                buildConfigField("String", "API_URL", "\"${url}\"")
+                buildConfigField("String", "IMG_URL", "\"${url}uploads/\"")
+                buildConfigField("String", "PRIVACY_POLCY", "\"${url}api/privacy_policy\"")
+                buildConfigField("String", "ABOUT_US", "\"${url}api/about_us\"")
+                buildConfigField("String", "TERMS_CONDITIONS", "\"${url}api/term_and_conditions\"")
+                buildConfigField("String", "FAQ", "\"${url}api/faq\"")
+                buildConfigField('boolean', 'HTTP_LOG', 'false')
+            }
+        }
+
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17//'1.8'
+    }
+    dataBinding {
+        android.buildFeatures.dataBinding = true
+    }
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+        buildConfig = true
+        compose true
+    }
+    kapt {
+        generateStubs = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.5.1'
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+    implementation project(":imagecropper")
+    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.6.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.6.0'
+    implementation 'androidx.recyclerview:recyclerview:1.3.1'
+    implementation 'androidx.activity:activity-compose:1.5.1'
+    implementation platform('androidx.compose:compose-bom:2022.10.00')
+    implementation 'androidx.compose.ui:ui'
+    implementation 'androidx.compose.ui:ui-graphics'
+    implementation 'androidx.compose.ui:ui-tooling-preview'
+    implementation 'androidx.compose.material3:material3'
+    implementation 'androidx.camera:camera-core:1.2.3'
+    implementation 'androidx.activity:activity:1.8.0'
+
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation platform('androidx.compose:compose-bom:2022.10.00')
+    androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
+    debugImplementation 'androidx.compose.ui:ui-tooling'
+    debugImplementation 'androidx.compose.ui:ui-test-manifest'
+    def multidex_version = "2.0.1"
+    implementation "androidx.multidex:multidex:$multidex_version"
+    implementation 'com.karumi:dexter:6.2.3'
+
+
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    // dependency for maintaining views and text sizes same across various screen sizes and dimensions
+    implementation 'com.intuit.sdp:sdp-android:1.1.0'
+    // New version
+
+    implementation 'com.github.aabhasr1:OtpView:v1.1.2-ktx'
+    implementation 'com.mikhaellopez:circularimageview:4.3.1'
+
+    def retrofit2_version = "2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit2_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit2_version"
+    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'
+
+    // dagger dependency injection
+   /* def dagger_version = "2.47"
+    implementation "com.google.dagger:dagger:$dagger_version"
+    implementation "com.google.dagger:dagger-android:$dagger_version"
+    implementation "com.google.dagger:dagger-android-support:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    kapt "com.google.dagger:dagger-android-processor:$dagger_version"*/
+
+    def dagger_version = "2.47"
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+
+//    image zoom
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+
+/*Glide Image Loader*/
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
+    kapt 'com.github.bumptech.glide:compiler:4.15.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.15.1'
+
+    //implementation 'id.zelory:compressor:2.1.0'
+    implementation 'id.zelory:compressor:2.1.0'
+    implementation 'com.squareup.picasso:picasso:2.8'
+
+    //Firebase
+    implementation 'com.google.firebase:firebase-core:19.0.2'
+    implementation 'com.google.firebase:firebase-iid:21.1.0'
+    implementation 'com.google.firebase:firebase-messaging:22.0.0'
+
+    //implementation 'io.agora.rtc:io.agora.rtc:voice-sdk:4.2.6'
+    implementation 'io.agora.rtc:full-sdk:4.0.1'
+    implementation("commons-codec:commons-codec:1.9")
+
+}
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
