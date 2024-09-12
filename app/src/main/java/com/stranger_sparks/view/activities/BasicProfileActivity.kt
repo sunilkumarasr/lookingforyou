@@ -160,7 +160,6 @@ class BasicProfileActivity : AppCompatActivity() {
         }
 
 
-
         binding.btnContinue.setOnClickListener {
 
             languageS()
@@ -199,8 +198,6 @@ class BasicProfileActivity : AppCompatActivity() {
                         return@setOnClickListener
                     }
                     if (isInLetImageSelected) {
-
-
                         var file: File
                         var inletMultiPart: MultipartBody.Part?
                         if (selectedImagesFile[0]?.path.isNullOrBlank()) {
@@ -226,8 +223,6 @@ class BasicProfileActivity : AppCompatActivity() {
                             val compressedImageFile =
                                 Compressor(this).compressToFile(selectedImagesFile[0])
 
-
-
                             inletMultiPart =
                                 compressedImageFile.asRequestBody("multipart/form-data".toMediaTypeOrNull())
                                     ?.let {
@@ -237,8 +232,6 @@ class BasicProfileActivity : AppCompatActivity() {
                                             it
                                         )
                                     }
-
-
                         }
                         var selectedGender: String = ""
                         if (binding.rbMale.isChecked) {
