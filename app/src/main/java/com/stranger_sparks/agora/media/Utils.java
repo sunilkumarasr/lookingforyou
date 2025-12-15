@@ -1,7 +1,5 @@
 package com.stranger_sparks.agora.media;
 
-
-
 import org.apache.commons.codec.binary.Base64;
 
 import javax.crypto.Mac;

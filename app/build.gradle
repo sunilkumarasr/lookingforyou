@@ -185,6 +185,7 @@ dependencies {
 
     implementation 'com.razorpay:checkout:1.6.41'
 
+    //crop image upload
     implementation 'com.github.yalantis:ucrop:2.2.8'
 
 }

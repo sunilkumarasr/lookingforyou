@@ -391,7 +391,6 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     //image upload
-    //image upload
     private fun openCropActivity(sourceUri: Uri) {
         val destinationUri = Uri.fromFile(File(cacheDir, "croppedImage.jpg"))
 
