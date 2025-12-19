@@ -44,8 +44,6 @@ class Notifications : AppCompatActivity() {
         (this.application as StrangerSparksApplication).applicationComponent.inject(this)
         binding = ActivityNotifications2Binding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.hide()
-        ConstantUtils.changeNotificationBarColor(this, ContextCompat.getColor(this, R.color.black), false)
 
         val sharedPreferenceManager = SharedPreferenceManager(this)
         userID = sharedPreferenceManager.getSavedLoginResponseUser()?.data?.id.toString()

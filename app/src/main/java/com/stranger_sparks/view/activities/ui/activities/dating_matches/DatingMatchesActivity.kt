@@ -21,8 +21,6 @@ class DatingMatchesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDatingMatchesBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.hide()
-        ConstantUtils.changeNotificationBarColor(this, ContextCompat.getColor(this, R.color.notification_bar_color_two), false)
 
         val viewModel: DatingMatchesViewModel =
             ViewModelProvider(this).get(DatingMatchesViewModel::class.java);

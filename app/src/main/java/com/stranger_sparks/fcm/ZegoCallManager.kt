@@ -29,8 +29,8 @@ object ZegoCallManager {
 
     var currentCallID: String? = null
 
-    private const val appID: Long = 1324171062
-    private const val appSign: String = "d9095ffba1bb2852764b35f04cbb92649392c7d26ca7a61c156a1b35e498e1b6"
+    private const val appID: Long = 1951552
+    private const val appSign: String = "49346d90ae3ed78526cd90f5a47c8df4a9aa25d66b2333e60414db745e0b85fc"
 
     fun initialize(application: Application, userID: String, userName: String) {
         // val config = ZegoUIKitPrebuiltCallInvitationConfig()

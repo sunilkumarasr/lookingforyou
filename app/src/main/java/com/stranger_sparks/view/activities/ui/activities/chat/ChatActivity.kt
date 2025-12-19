@@ -23,6 +23,7 @@ import com.stranger_sparks.view.activities.SignInSignUpActivity
 import com.stranger_sparks.view.activities.ui.activities.help.HelpActivityViewModel
 
 class ChatActivity : AppCompatActivity() {
+
     lateinit var binding: ActivityChatBinding
 
     private lateinit var  newMatchesAdapter: NewMatchesAdapter
@@ -33,8 +34,6 @@ class ChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.hide()
-        ConstantUtils.changeNotificationBarColor(this, ContextCompat.getColor(this, R.color.black), false)
 
         val viewModel: ChatViewModel =
             ViewModelProvider(this).get(ChatViewModel::class.java);

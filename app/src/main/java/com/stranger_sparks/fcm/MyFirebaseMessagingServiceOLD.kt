@@ -6,10 +6,10 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.PowerManager
 import android.util.Log
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
@@ -17,10 +17,12 @@ import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.stranger_sparks.R
 import com.stranger_sparks.utils.SharedPreferenceManager
-import com.stranger_sparks.view.activities.HomeActivity
 import com.stranger_sparks.view.activities.ui.activities.notifications.Notifications
+import com.zegocloud.uikit.prebuilt.call.ZegoUIKitPrebuiltCallService
+import com.zegocloud.uikit.prebuilt.call.invite.ZegoUIKitPrebuiltCallInvitationConfig
 import org.json.JSONException
 import org.json.JSONObject
+
 
 class MyFirebaseMessagingServiceOLD : FirebaseMessagingService() {
 
@@ -111,9 +113,35 @@ class MyFirebaseMessagingServiceOLD : FirebaseMessagingService() {
         Log.e("userID_",profile_id)
         Log.e("userName_",title)
 
-        // Start the service to initialize Zego
-        val serviceIntent = Intent(applicationContext, CallService::class.java)
-        ContextCompat.startForegroundService(applicationContext, serviceIntent)
+//        val callInvitationConfig = ZegoUIKitPrebuiltCallInvitationConfig()
+//        callInvitationConfig.outgoingCallBackground = ColorDrawable(Color.BLUE)
+//        callInvitationConfig.incomingCallBackground = ColorDrawable(Color.GREEN)
+//        ZegoUIKitPrebuiltCallService.init(
+//            getApplication(),
+//            1951552,
+//            "49346d90ae3ed78526cd90f5a47c8df4a9aa25d66b2333e60414db745e0b85fc",
+//            userID,
+//            userName,
+//            callInvitationConfig
+//        )
+
+        val callInvitationConfig = ZegoUIKitPrebuiltCallInvitationConfig().apply {
+            translationText.incomingCallPageDeclineButton = "Decline"
+            translationText.incomingCallPageAcceptButton = "Accept"
+        }
+
+        ZegoUIKitPrebuiltCallService.init(
+            application,
+            1951552,
+            "49346d90ae3ed78526cd90f5a47c8df4a9aa25d66b2333e60414db745e0b85fc",
+            userID,
+            userName,
+            callInvitationConfig
+        )
+
+//        // Start the service to initialize Zego
+//        val serviceIntent = Intent(applicationContext, CallService::class.java)
+//        ContextCompat.startForegroundService(applicationContext, serviceIntent)
 
     }
 

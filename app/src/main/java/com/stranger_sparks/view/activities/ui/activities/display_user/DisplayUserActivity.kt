@@ -56,8 +56,6 @@ import java.util.TimerTask
 import javax.inject.Inject
 
 class DisplayUserActivity : AppCompatActivity(), OnItemClickListenerProfilesGalleryImages {
-    //var userData: UserProfileResponse.Data? = null
-    lateinit var sharedProfileViewModel: SharedProfileViewModel
 
     lateinit var binding: ActivityDisplayUserBinding
 

@@ -33,8 +33,6 @@ class ManageSubscription : AppCompatActivity() , OnItemClickListenerWithPosition
         (this.application as StrangerSparksApplication).applicationComponent.inject(this)
         binding = ActivityManageSubscriptionBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.hide()
-        ConstantUtils.changeNotificationBarColor(this, ContextCompat.getColor(this, R.color.notification_bar_color_two), false)
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this

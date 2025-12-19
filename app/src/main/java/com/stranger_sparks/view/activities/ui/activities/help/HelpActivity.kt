@@ -39,8 +39,6 @@ class HelpActivity : AppCompatActivity() {
         (this.application as StrangerSparksApplication).applicationComponent.inject(this)
         binding = ActivityHelpBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.hide()
-        ConstantUtils.changeNotificationBarColor(this, ContextCompat.getColor(this, R.color.black), false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         viewModel.inputSignal.observe(this) {

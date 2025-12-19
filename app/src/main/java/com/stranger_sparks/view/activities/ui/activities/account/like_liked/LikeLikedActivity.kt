@@ -31,12 +31,9 @@ class LikeLikedActivity : AppCompatActivity() {
         (this.application as StrangerSparksApplication).applicationComponent.inject(this)
         binding = ActivityLikeLikedBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.hide()
-        ConstantUtils.changeNotificationBarColor(this, ContextCompat.getColor(this, R.color.black), false)
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
-        binding.rbAll.isChecked = true
         binding.rbLike.isChecked = true
         sharedPreferenceManager = SharedPreferenceManager(this)
         userID = sharedPreferenceManager.getSavedLoginResponseUser()?.data?.id.toString()
@@ -77,10 +74,10 @@ class LikeLikedActivity : AppCompatActivity() {
 //            }else if(checkedId == R.id.rbViews){
 //                viewModel.likeLikedLiveData(userID, "4")
 //            }
-             if(checkedId == R.id.rbLike){
-                viewModel.likeLikedLiveData(userID, "2")
+            if(checkedId == R.id.rbLike){
+                viewModel.likeLikedLiveData(userID, "1")
             }else if(checkedId == R.id.rbLiked){
-                viewModel.likeLikedLiveData(userID, "3")
+                viewModel.likeLikedLiveData(userID, "2")
             }
         }
 

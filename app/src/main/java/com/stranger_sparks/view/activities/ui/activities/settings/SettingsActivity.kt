@@ -41,8 +41,6 @@ class SettingsActivity : AppCompatActivity() {
         (this.application as StrangerSparksApplication).applicationComponent.inject(this)
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.hide()
-        ConstantUtils.changeNotificationBarColor(this, ContextCompat.getColor(this, R.color.black), false)
 
         /*val viewModel: SettingsViewModel =
             ViewModelProvider(this).get(SettingsViewModel::class.java);*/

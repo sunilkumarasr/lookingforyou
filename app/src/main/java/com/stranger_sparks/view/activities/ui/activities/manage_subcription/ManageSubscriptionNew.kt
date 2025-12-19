@@ -25,8 +25,6 @@ class ManageSubscriptionNew : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityManageSubscriptionNewBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.hide()
-        ConstantUtils.changeNotificationBarColor(this, ContextCompat.getColor(this, R.color.black), false)
 
         val fragments = listOf(
             AudioSubscriptionFragment(),

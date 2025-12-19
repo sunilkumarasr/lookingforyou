@@ -101,8 +101,8 @@
     <string name="no_data">No Records Found</string>
     <string name="gallery_images">Gallery Images</string>
     <string name="skip"><![CDATA[Skip>>]]></string>
-    <string name="like">Like</string>
-    <string name="liked">Liked</string>
+    <string name="like">Other Likes</string>
+    <string name="liked">You Liked</string>
     <string name="payments">Payments</string>
     <string name="menu_title_profiles">Profiles</string>
     <string name="search">Search</string>

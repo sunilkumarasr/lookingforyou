@@ -31,8 +31,6 @@ class WalletTransactionsActivity : AppCompatActivity() {
         (this.application as StrangerSparksApplication).applicationComponent.inject(this)
         binding = ActivityWalletTransectionsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.hide()
-        ConstantUtils.changeNotificationBarColor(this, ContextCompat.getColor(this, R.color.black), false)
 
 
         binding.viewModel = viewModel

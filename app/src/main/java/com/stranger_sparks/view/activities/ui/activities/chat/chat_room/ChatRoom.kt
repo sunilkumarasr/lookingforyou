@@ -43,6 +43,7 @@ import java.io.FileOutputStream
 import javax.inject.Inject
 
 class ChatRoom : AppCompatActivity(), OnItemClickListenerChatRoom {
+
     lateinit var binding: ActivityChatRoomBinding
 
     @Inject
@@ -61,12 +62,7 @@ class ChatRoom : AppCompatActivity(), OnItemClickListenerChatRoom {
         (this.application as StrangerSparksApplication).applicationComponent.inject(this)
         binding = ActivityChatRoomBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.hide()
-        ConstantUtils.changeNotificationBarColor(
-            this,
-            ContextCompat.getColor(this, R.color.notification_bar_color_two),
-            false
-        )
+
         profile_id = intent.extras?.getString("PROFILE_ID").toString()
         val sharedPreferenceManager = SharedPreferenceManager(this)
         userID = sharedPreferenceManager.getSavedLoginResponseUser()?.data?.id.toString()

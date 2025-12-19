@@ -1,6 +1,7 @@
 package com.stranger_sparks.adapterrs
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,11 +14,9 @@ import com.mikhaellopez.circularimageview.CircularImageView
 import com.stranger_sparks.R
 import com.stranger_sparks.data_model.LikeLikedResponse
 import com.stranger_sparks.data_model.WalletTransectionResponse
+import com.stranger_sparks.view.activities.ui.activities.display_user.DisplayUserActivity
 
 class LikeLikedAdapter(var context: Context) : RecyclerView.Adapter<LikeLikedAdapter.ViewHolder>() {
-
-    //private lateinit var dataList: WalletTransectionResponse.Data
-
      var dataList = emptyList<LikeLikedResponse.Data>()
     internal fun setDataList(dataList: List<LikeLikedResponse.Data>) {
         this.dataList = dataList
@@ -54,8 +53,6 @@ class LikeLikedAdapter(var context: Context) : RecyclerView.Adapter<LikeLikedAda
         if (data.type.equals("1")){
             holder.tvProfileDescription.text = data.name+ " liked your profile!"
         }else if (data.type.equals("2")){
-            holder.tvProfileDescription.text = data.name+ " liked your profile!"
-        }else if (data.type.equals("3")){
             holder.tvProfileDescription.text = "You Liked "+data.name+ " Profile!"
         }
 
@@ -63,6 +60,12 @@ class LikeLikedAdapter(var context: Context) : RecyclerView.Adapter<LikeLikedAda
             .error(R.drawable.img_placeholder)
             .transform(CenterCrop(), RoundedCorners(10))
             .into(holder.ivProfleImage)
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, DisplayUserActivity::class.java)
+            intent.putExtra("PROFILE_ID", data.id.toString())
+            holder.itemView.context.startActivity(intent)
+        }
 
     }
 
