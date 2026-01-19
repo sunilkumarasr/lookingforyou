@@ -3,10 +3,13 @@ package com.stranger_sparks.view.activities.ui.activities.display_user
 import android.Manifest
 import android.app.Activity
 import android.app.AlertDialog
+import android.app.Dialog
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -14,7 +17,9 @@ import android.os.PowerManager
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
+import android.widget.Button
 import android.widget.CheckedTextView
+import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -107,6 +112,7 @@ class DisplayUserActivity : AppCompatActivity(), OnItemClickListenerProfilesGall
         binding = ActivityDisplayUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         //permisstion
         if (!checkSelfPermission()) {
             ActivityCompat.requestPermissions(this, REQUESTED_PERMISSIONS, PERMISSION_REQ_ID);
@@ -122,6 +128,13 @@ class DisplayUserActivity : AppCompatActivity(), OnItemClickListenerProfilesGall
         val sharedPreferenceManager = SharedPreferenceManager(this)
         userID = sharedPreferenceManager.getSavedLoginResponseUser()?.data?.id.toString()
         userName = sharedPreferenceManager.getSavedLoginResponseUser()?.data?.name.toString()
+
+
+        //call Alert
+        val CallAlert = sharedPreferenceManager.getCallAlert("CallAlert")
+        if (CallAlert.equals("") || CallAlert ==null){
+            showCustomDialog()
+        }
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
@@ -246,8 +259,6 @@ class DisplayUserActivity : AppCompatActivity(), OnItemClickListenerProfilesGall
             if (!binding.cbLiked.isChecked) {
                 (it as CheckedTextView).toggle()
                 viewModel.likedProfile(userID, profile_id)
-                Log.e("userID",userID)
-                Log.e("profile_id",profile_id)
                 viewModel.likeHitChangeLiveData.observe(this) {
                     if (it?.status == true) {
                         it.message.let { it1 -> ConstantUtils.showSuccessToast(this, it1) }
@@ -406,6 +417,23 @@ class DisplayUserActivity : AppCompatActivity(), OnItemClickListenerProfilesGall
         outGoingCallMethod()
 
     }
+
+
+    fun showCustomDialog() {
+        val dialog = Dialog(this@DisplayUserActivity)
+        dialog.setContentView(R.layout.call_alert_show_popup)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        val btnClose = dialog.findViewById<RelativeLayout>(R.id.btnClose)
+        btnClose.setOnClickListener {
+            val sharedPreferenceManager = SharedPreferenceManager(this)
+            sharedPreferenceManager.saveCallAlert("CallAlert", "yes")
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
+
 
     private fun outGoingCallMethod() {
 

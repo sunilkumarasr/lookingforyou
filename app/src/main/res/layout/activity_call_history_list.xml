@@ -7,7 +7,6 @@
 
 
     <data>
-
         <variable
             name="viewModel"
             type="com.stranger_sparks.view.activities.ui.activities.call_List.CallViewModel" />

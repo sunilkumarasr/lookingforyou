@@ -273,8 +273,6 @@
                 android:background="@drawable/edit_text_gray_corner"
                 android:orientation="horizontal">
 
-
-
                 <EditText
                     android:id="@+id/etAmount"
                     android:layout_width="match_parent"

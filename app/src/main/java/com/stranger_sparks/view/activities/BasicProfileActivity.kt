@@ -198,21 +198,6 @@ class BasicProfileActivity : AppCompatActivity() {
                             ConstantUtils.showToast(this, "Please Picture")
                             return@setOnClickListener
                         } else {
-                            file = File(selectedImagesFile[0]!!.path.toString())
-
-                            /*inletMultiPart =
-                                file?.asRequestBody("multipart/form-data".toMediaTypeOrNull())
-                                    ?.let {
-                                        MultipartBody.Part.createFormData(
-                                            "image", file?.name,
-                                            it
-                                        )
-                                    }*/
-
-
-                            //if you need bitmap
-                            // val bitmap = Compressor(this).compressToBitmap(selectedImagesFile[0])
-
                             inletMultiPart =
                                 selectedImagesFile[0].asRequestBody("multipart/form-data".toMediaTypeOrNull())
                                     ?.let {
@@ -275,28 +260,6 @@ class BasicProfileActivity : AppCompatActivity() {
             resp?.message?.let { ConstantUtils.showToast(this, it) }
             binding.progressBar.visibility = View.GONE
             if (resp?.status == true) {
-                /*val sharedPreferenceManager =  SharedPreferenceManager(this)
-                var loginResponse: LoginResponse? = sharedPreferenceManager.getSavedLoginResponseUser()
-                loginResponse?.data?.profile_completed = "1"
-                sharedPreferenceManager.clearAllData()
-                if (loginResponse != null) {
-                    sharedPreferenceManager.saveLoginResponse(loginResponse)
-                }
-
-                *//*if (resp != null) {
-                    sharedPreferenceManager.saveLoginResponse(resp)
-                }*//*
-                if(sharedPreferenceManager.getSavedLoginResponseUser()?.data?.profile_completed == "1"){
-                    Intent(applicationContext, Subcription::class.java).also {
-                        startActivity(it)
-
-                    }
-
-                }else{
-
-                }*/
-
-
                 if (resp?.status == true) {
                     val sharedPreferenceManager = SharedPreferenceManager(this)
                     sharedPreferenceManager.clearAllData()
@@ -306,18 +269,15 @@ class BasicProfileActivity : AppCompatActivity() {
 
 
                     if (sharedPreferenceManager.getSavedLoginResponseUser()?.data?.profile_completed == "1") {
-//                        Intent(applicationContext, Subcription::class.java).also {
-//                            startActivity(it)
-//                        }
                         Intent(applicationContext, HomeActivity::class.java).also {
                             startActivity(it)
                         }
                     }
                 } else {
-                    //res?.message?.let { ConstantUtils.showToast(this, it) }
+                    ConstantUtils.showToast(applicationContext, "Failed")
                 }
             } else {
-                //res?.message?.let { ConstantUtils.showToast(this, it) }
+                ConstantUtils.showToast(applicationContext, "Failed")
             }
         }
         binding.tvDOB.setOnClickListener {

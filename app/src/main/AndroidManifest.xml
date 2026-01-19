@@ -223,10 +223,6 @@
             android:name="com.onesignal.NotificationAccentColor.DEFAULT"
             android:value="@color/red" />
 
-        <service
-            android:name=".fcm.CallService"
-            android:exported="false"
-            android:foregroundServiceType="dataSync|phoneCall" />
     </application>
 
 </manifest>

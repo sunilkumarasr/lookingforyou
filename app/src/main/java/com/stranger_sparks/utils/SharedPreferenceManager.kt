@@ -35,6 +35,14 @@ class SharedPreferenceManager(val context: Context) {
         return sharedPref.getString(key, null)
     }
 
+    fun saveCallAlert(key: String, value: String) {
+        sharedPref.edit().putString(key, value).apply()
+    }
+
+    fun getCallAlert(key: String): String? {
+        return sharedPref.getString(key, null)
+    }
+
     fun clearAllData(): Boolean{
         val editor=sharedPref.edit()
         editor.clear()

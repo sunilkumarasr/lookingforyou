@@ -5,6 +5,21 @@
       <config />
     </shared>
     <layouts>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/drawable/dialog_bg.xml">
+        <config>
+          <theme>@style/Theme.StrangerSparks</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/drawable/layout_checkbox_like.xml">
+        <config>
+          <theme>@style/Theme.StrangerSparks</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/font/mulish_extrabold.xml">
+        <config>
+          <theme>@style/Theme.StrangerSparks</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_account.xml">
         <config>
           <theme>@style/Theme.StrangerSparks</theme>
@@ -16,6 +31,11 @@
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_call2.xml">
+        <config>
+          <theme>@style/Theme.StrangerSparks</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_call_history_list.xml">
         <config>
           <theme>@style/Theme.StrangerSparks</theme>
         </config>
@@ -110,7 +130,17 @@
           <theme>@style/Theme.StrangerSparks</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/call_alert_show_popup.xml">
+        <config>
+          <theme>@style/Theme.StrangerSparks</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_audio_subscription.xml">
+        <config>
+          <theme>@style/Theme.StrangerSparks</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/row_item_call_list_screen.xml">
         <config>
           <theme>@style/Theme.StrangerSparks</theme>
         </config>
@@ -122,38 +152,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c8b38286-f8db-4da1-8ebc-115991b675be" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/ui/HomeCallActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_home_call.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/dialog_bg.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/call_alert_show_popup.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.13/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.13/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.13/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/adapterrs/LikeLikedAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/adapterrs/LikeLikedAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/fcm/MyFirebaseMessagingServiceOLD.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/fcm/MyFirebaseMessagingServiceOLD.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/fcm/ZegoCallManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/fcm/ZegoCallManager.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/ui/activities/account/add_images/AddImagesActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/ui/activities/account/add_images/AddImagesActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/ui/activities/account/like_liked/LikeLikedActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/ui/activities/account/like_liked/LikeLikedActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/ui/activities/chat/ChatActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/ui/activities/chat/ChatActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/ui/activities/chat/chat_room/ChatRoom.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/ui/activities/chat/chat_room/ChatRoom.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/ui/activities/dating_matches/DatingMatchesActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/ui/activities/dating_matches/DatingMatchesActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/fcm/CallService.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/utils/SharedPreferenceManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/utils/SharedPreferenceManager.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/BasicProfileActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/BasicProfileActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/ui/HomeCallActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/ui/HomeCallActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/ui/activities/display_user/DisplayUserActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/ui/activities/display_user/DisplayUserActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/ui/activities/help/HelpActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/ui/activities/help/HelpActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/ui/activities/manage_subcription/ManageSubscription.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/ui/activities/manage_subcription/ManageSubscription.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/ui/activities/manage_subcription/ManageSubscriptionNew.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/ui/activities/manage_subcription/ManageSubscriptionNew.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/ui/activities/notifications/Notifications.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/ui/activities/notifications/Notifications.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/ui/activities/settings/SettingsActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/ui/activities/settings/SettingsActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/ui/activities/wallet/WalletActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/ui/activities/wallet/WalletActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/ui/activities/wallet/transections/WalletTransactionsActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/stranger_sparks/view/activities/ui/activities/wallet/transections/WalletTransactionsActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_like_liked.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_like_liked.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_call_history_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_call_history_list.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_wallet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_wallet.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/problems/problems-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/problems/problems-report.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -164,7 +177,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=4DYX49NVR4Q4D6LV)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=/Users/sunil/.android/avd/Medium_Phone.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -191,6 +204,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Class" />
+        <option value="layoutResourceFile" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -326,12 +341,12 @@
       <map>
         <entry key="com.stranger_sparks">
           <value>
-            <CheckInfo lastCheckTimestamp="1766045361151" />
+            <CheckInfo lastCheckTimestamp="1768833449290" />
           </value>
         </entry>
         <entry key="com.stranger_sparks.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1766045361150" />
+            <CheckInfo lastCheckTimestamp="1768833449290" />
           </value>
         </entry>
       </map>
