@@ -117,8 +117,8 @@ class WalletActivity : AppCompatActivity(), PaymentResultWithDataListener {
         }
         binding.btnContinue.setOnClickListener {
             if(checkAmountValidation()){
-                 createOrderId()
-                //viewModel.addWalletAmount(userID, binding.etAmount.text.trim().toString())
+                // createOrderId()
+                viewModel.addWalletAmount(userID, binding.etAmount.text.trim().toString())
             }
         }
         binding.btnSubmit.setOnClickListener {

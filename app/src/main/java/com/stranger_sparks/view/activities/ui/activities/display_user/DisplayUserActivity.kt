@@ -719,7 +719,7 @@ class DisplayUserActivity : AppCompatActivity(), OnItemClickListenerProfilesGall
                 isCallHandled = false
                 ZegoUIKitPrebuiltCallService.endCall()
             }
-        }, 30_000)
+        }, 20_000)
     }
 
     private fun callCancelOutSidePerson() {
