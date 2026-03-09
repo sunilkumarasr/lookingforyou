@@ -1,15 +1,20 @@
 package com.stranger_sparks.view.activities
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import com.stranger_sparks.StrangerSparksApplication
 import com.stranger_sparks.databinding.ActivitySignInSignUpBinding
 import com.stranger_sparks.utils.ConstantUtils
 import com.stranger_sparks.utils.Constants
 import com.stranger_sparks.viewmodel.SignInSignUpViewModel
+import com.tencent.mmkv.MMKV
+import com.zegocloud.uikit.ZegoUIKit
+import com.zegocloud.uikit.prebuilt.call.ZegoUIKitPrebuiltCallService
 import javax.inject.Inject
 
 class SignInSignUpActivity : AppCompatActivity() {
@@ -25,6 +30,8 @@ class SignInSignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         (this.application as StrangerSparksApplication).applicationComponent.inject(this)
         binding = ActivitySignInSignUpBinding.inflate(layoutInflater)
+
+        clearCatche()
 
         viewModel.getAboutTermsPrivacy("6")
         setContentView(binding.root)
@@ -64,6 +71,29 @@ class SignInSignUpActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    private fun clearCatche() {
+        // Clear SharedPreferences
+        getSharedPreferences("app_prefs", Context.MODE_PRIVATE).edit { clear() }
+        getSharedPreferences("app_cache", Context.MODE_PRIVATE).edit { clear() }
+
+        // Clear MMKV data
+        try {
+            MMKV.defaultMMKV().clearAll()
+            MMKV.mmkvWithID("default").clearAll()
+            MMKV.mmkvWithID("user").clearAll()
+        } catch (e: Exception) { e.printStackTrace() }
+
+        // Clear Zego cache
+        try {
+            val isInit = ZegoUIKit.getLocalUser() != null
+
+            if (isInit) {
+                ZegoUIKitPrebuiltCallService.endCall()
+                ZegoUIKitPrebuiltCallService.unInit()
+            }
+        } catch (e: Exception) { e.printStackTrace() }
     }
 
     fun checkValidation(): Boolean {

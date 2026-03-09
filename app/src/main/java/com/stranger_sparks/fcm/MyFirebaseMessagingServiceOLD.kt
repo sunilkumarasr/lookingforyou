@@ -17,6 +17,7 @@ import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.stranger_sparks.R
 import com.stranger_sparks.utils.SharedPreferenceManager
+import com.stranger_sparks.view.activities.ui.activities.chat.chat_room.ChatRoom
 import com.stranger_sparks.view.activities.ui.activities.notifications.Notifications
 import com.zegocloud.uikit.prebuilt.call.ZegoUIKitPrebuiltCallService
 import com.zegocloud.uikit.prebuilt.call.invite.ZegoUIKitPrebuiltCallInvitationConfig
@@ -94,6 +95,16 @@ class MyFirebaseMessagingServiceOLD : FirebaseMessagingService() {
                 createNotification(body)
             }
 
+            if (type == "Chat") {
+                val intent = Intent(applicationContext, ChatRoom::class.java).apply {
+                    putExtra("PROFILE_ID", profile_id)
+                    putExtra("is_chart", "")
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
+                startActivity(intent)
+            }
+
+
         }
 
     }
@@ -118,8 +129,8 @@ class MyFirebaseMessagingServiceOLD : FirebaseMessagingService() {
 //        callInvitationConfig.incomingCallBackground = ColorDrawable(Color.GREEN)
 //        ZegoUIKitPrebuiltCallService.init(
 //            getApplication(),
-//            1951552,
-//            "49346d90ae3ed78526cd90f5a47c8df4a9aa25d66b2333e60414db745e0b85fc",
+//            891467133,
+//            "0d689441dbdb4d810543f7f0f110a83cc4b0e664c81aff12fcdeb5a2508da04d",
 //            userID,
 //            userName,
 //            callInvitationConfig
@@ -132,8 +143,8 @@ class MyFirebaseMessagingServiceOLD : FirebaseMessagingService() {
 
         ZegoUIKitPrebuiltCallService.init(
             application,
-            1951552,
-            "49346d90ae3ed78526cd90f5a47c8df4a9aa25d66b2333e60414db745e0b85fc",
+            891467133,
+            "0d689441dbdb4d810543f7f0f110a83cc4b0e664c81aff12fcdeb5a2508da04d",
             userID,
             userName,
             callInvitationConfig

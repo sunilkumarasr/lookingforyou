@@ -17,10 +17,8 @@ import android.os.PowerManager
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
-import android.widget.Button
 import android.widget.CheckedTextView
 import android.widget.RelativeLayout
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -34,17 +32,12 @@ import com.stranger_sparks.api_dragger_flow.di.ApplicationModule
 import com.stranger_sparks.data_model.GalleryImagesResponse
 import com.stranger_sparks.databinding.ActivityDisplayUserBinding
 import com.stranger_sparks.fcm.ZegoCallManager
-import com.stranger_sparks.fcm.ZegoCallManager.callCancelAPI
 import com.stranger_sparks.inerfaces.OnItemClickListenerProfilesGalleryImages
 import com.stranger_sparks.utils.ConstantUtils
 import com.stranger_sparks.utils.SharedPreferenceManager
 import com.stranger_sparks.view.activities.ui.activities.account.gallery.GalleryImageZoomActivity
 import com.stranger_sparks.view.activities.ui.activities.chat.chat_room.ChatRoom
-import com.stranger_sparks.viewmodel.SharedProfileViewModel
-import com.zegocloud.uikit.ZegoUIKit
-import com.zegocloud.uikit.plugin.adapter.plugins.signaling.ZegoSignalingPluginEventHandler
 import com.zegocloud.uikit.prebuilt.call.ZegoUIKitPrebuiltCallService
-import com.zegocloud.uikit.prebuilt.call.event.SignalPluginConnectListener
 import com.zegocloud.uikit.prebuilt.call.invite.internal.IncomingCallButtonListener
 import com.zegocloud.uikit.prebuilt.call.invite.internal.OutgoingCallButtonListener
 import com.zegocloud.uikit.prebuilt.call.invite.internal.ZegoCallType
@@ -52,10 +45,6 @@ import com.zegocloud.uikit.prebuilt.call.invite.internal.ZegoCallUser
 import com.zegocloud.uikit.prebuilt.call.invite.internal.ZegoInvitationCallListener
 import com.zegocloud.uikit.prebuilt.call.invite.widget.ZegoSendCallInvitationButton
 import com.zegocloud.uikit.service.defines.ZegoUIKitUser
-import im.zego.zim.enums.ZIMConnectionEvent
-import im.zego.zim.enums.ZIMConnectionState
-import org.json.JSONObject
-import java.net.URLDecoder
 import java.util.Timer
 import java.util.TimerTask
 import javax.inject.Inject
@@ -128,7 +117,7 @@ class DisplayUserActivity : AppCompatActivity(), OnItemClickListenerProfilesGall
         val sharedPreferenceManager = SharedPreferenceManager(this)
         userID = sharedPreferenceManager.getSavedLoginResponseUser()?.data?.id.toString()
         userName = sharedPreferenceManager.getSavedLoginResponseUser()?.data?.name.toString()
-
+        Log.e("userName_",userName)
 
         //call Alert
         val CallAlert = sharedPreferenceManager.getCallAlert("CallAlert")
@@ -788,7 +777,6 @@ class DisplayUserActivity : AppCompatActivity(), OnItemClickListenerProfilesGall
                     WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD
         )
     }
-
 
     override fun onResume() {
         super.onResume()

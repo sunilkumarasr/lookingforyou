@@ -21,6 +21,7 @@ import com.stranger_sparks.data_model.SubscriptionPlansDTO
 import com.stranger_sparks.data_model.SuggestionCityResponse
 import com.stranger_sparks.data_model.SuggestionVersionResponse
 import com.stranger_sparks.data_model.UserProfileResponse
+import com.stranger_sparks.data_model.VersionResponse
 import com.stranger_sparks.data_model.WalletTransectionResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -228,6 +229,9 @@ class StrangerSparksRepository @Inject constructor(private val apiService: Stran
         return apiService.searchUserByLocation(cityName, user_id)
     }
 
+    fun versionCheckHome(version: String): Call<VersionResponse> {
+        return apiService.versionCheckHome(version)
+    }
     fun searchUserByLocationHome(cityName: String, user_id: String): Call<UserProfileResponse> {
         return apiService.searchUserByLocation(cityName, user_id)
     }

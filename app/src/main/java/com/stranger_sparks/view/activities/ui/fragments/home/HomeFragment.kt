@@ -1,15 +1,21 @@
 package com.stranger_sparks.view.activities.ui.fragments.home
 
 import android.app.Application
+import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.stranger_sparks.BuildConfig
+import com.stranger_sparks.R
 import com.stranger_sparks.StrangerSparksApplication
 import com.stranger_sparks.adapterrs.HomeAdapter
 import com.stranger_sparks.data_model.UserProfileResponse
@@ -43,10 +49,6 @@ class HomeFragment : Fragment(), OnItemClickListenerProfiles {
 
 
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-       /* val viewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
-
-        viewModel.binding = binding*/
 
         return binding.root
     }
@@ -65,6 +67,15 @@ class HomeFragment : Fragment(), OnItemClickListenerProfiles {
                 it,userID
             )
             binding.progressbar.visibility=View.VISIBLE
+        }
+
+        val versionName = BuildConfig.VERSION_NAME
+        viewModel.versionCheckLiveData(versionName)
+        //Log.e("versionName: ", versionName)
+        viewModel.versionCheckLiveData.observe(requireActivity()) {
+            if (it?.status == false) {
+                showBottomPopup()
+            }
         }
 
         binding.rcvUserProfiles.layoutManager = GridLayoutManager(requireContext(), 2)
@@ -123,11 +134,53 @@ class HomeFragment : Fragment(), OnItemClickListenerProfiles {
         }
     }
 
+    private fun showBottomPopup() {
+
+        val dialog = BottomSheetDialog(requireActivity())
+        val view = layoutInflater.inflate(R.layout.bottom_version_layout, null)
+
+        dialog.setContentView(view)
+        dialog.setCancelable(false) // force update style (optional)
+
+        val btnUpdate = view.findViewById<Button>(R.id.btnUpdate)
+
+        btnUpdate.setOnClickListener {
+            dialog.dismiss()
+            // Open Play Store
+            val appPackageName = "com.stranger_sparks"
+
+            try {
+                // Open Play Store App
+                val intent = Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("market://details?id=$appPackageName")
+                )
+                intent.setPackage("com.android.vending")
+                startActivity(intent)
+            } catch (e: ActivityNotFoundException) {
+                // If Play Store app not installed, open in browser
+                val intent = Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://play.google.com/store/apps/details?id=$appPackageName")
+                )
+                startActivity(intent)
+            }
+        }
+
+        (dialog.findViewById<View>(
+            com.google.android.material.R.id.design_bottom_sheet
+        ))?.setBackgroundResource(android.R.color.transparent)
+
+        dialog.show()
+    }
+
     override fun onResume() {
         super.onResume()
         //incoming call received
         incomingCallReceived()
     }
+
+
 
 
 

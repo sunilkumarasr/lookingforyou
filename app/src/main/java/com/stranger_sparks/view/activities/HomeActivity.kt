@@ -188,7 +188,12 @@ class HomeActivity : AppCompatActivity() {
             }
         }
 
-        viewModel.getVersionControl("12.0.1")
+
+        val versionName = packageManager
+            .getPackageInfo(packageName, 0)
+            .versionName
+        Log.e("versionName",versionName.toString())
+        viewModel.getVersionControl(versionName.toString())
         viewModel.versionControl.observe(this){
             try {
                 if(it?.status == false) {

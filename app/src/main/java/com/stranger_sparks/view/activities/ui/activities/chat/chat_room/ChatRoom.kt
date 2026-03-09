@@ -79,28 +79,31 @@ class ChatRoom : AppCompatActivity(), OnItemClickListenerChatRoom {
         messages!!.add(Message("Thanks You", "2", 2023))
         messages!!.add(Message("Hello world", "1", 2023))*/
         chatRoomAdapter = ChatRoomAdapter(this@ChatRoom, userID, profile_id, this)
-        binding!!.rcvChat.layoutManager = LinearLayoutManager(this@ChatRoom)
+        val layoutManager = LinearLayoutManager(this@ChatRoom).apply {
+            stackFromEnd = true
+        }
+
+        binding!!.rcvChat.layoutManager = layoutManager
         binding!!.rcvChat.adapter = chatRoomAdapter
+
         // notificationAdapter.setDataList(dataList)
 
 
         viewModel.getMessageLiveData(userID, profile_id)
         viewModel.getMessageLiveData.observe(this) {
-            if (it?.status == true) {
-                if (it?.data?.size!! > 0) {
-                    binding.tvNoRecordsDefault.visibility = View.GONE
-                    binding.rcvChat.visibility = View.VISIBLE
-                    it?.data?.let { it1 -> chatRoomAdapter.setDataList(it1.reversed()) }
-                    chatRoomAdapter.notifyDataSetChanged()
-                    binding.rcvChat.post(Runnable {
-                        binding.rcvChat.smoothScrollToPosition(
-                            chatRoomAdapter.getItemCount() - 1
-                        )
-                    })
-                } else {
-                    binding.tvNoRecordsDefault.visibility = View.VISIBLE
-                    binding.rcvChat.visibility = View.GONE
+            if (it?.status == true && !it.data.isNullOrEmpty()) {
+
+                binding.tvNoRecordsDefault.visibility = View.GONE
+                binding.rcvChat.visibility = View.VISIBLE
+
+                val reversedList = it.data.reversed()   // 👈 reverse here
+                chatRoomAdapter.setDataList(reversedList)
+                chatRoomAdapter.notifyDataSetChanged()
+
+                binding.rcvChat.post {
+                    binding.rcvChat.scrollToPosition(reversedList.size - 1)
                 }
+
             } else {
                 binding.tvNoRecordsDefault.visibility = View.VISIBLE
                 binding.rcvChat.visibility = View.GONE
@@ -182,8 +185,6 @@ class ChatRoom : AppCompatActivity(), OnItemClickListenerChatRoom {
 
                                 if (isInLetImageSelected) {
                                     dialog.dismiss()
-                                    //loading
-                                    binding.progressBar.visibility = View.VISIBLE
 
                                     userID?.let {
                                         viewModel.sendChartImage(
@@ -217,8 +218,6 @@ class ChatRoom : AppCompatActivity(), OnItemClickListenerChatRoom {
         binding.ivAttachment.setOnClickListener { }
         binding.ivCamera.setOnClickListener { getContent.launch("image/*") }
         viewModel.sendChartImageLiveData.observe(this) {
-            //loading dismiss
-            binding.progressBar.visibility = View.GONE
 
             if (it?.status == true) {
                 isInLetImageSelected = false
